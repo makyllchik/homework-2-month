@@ -8,29 +8,30 @@
 
 
 class TimeDesk:
-
-    def convert(self, seconds, minutes, hours, days):
+    def __init__(self, seconds):
         self.seconds = seconds
-        self.minutes = minutes
-        self.hours = hours
-        self.days = days
 
-    seconds_in_day = 86400
-    seconds_in_hour = 3600
-    seconds_in_minute = 60
+    def converter(self):
+        days = int(self.seconds / (24 * 60 * 60))
+        self.seconds -= days * 24 * 60 * 60
+        hours = int(self.seconds / 60 / 60)
+        self.seconds -= hours * 60 * 60
+        minutes = int(self.seconds / 60)
+        self.seconds -= minutes * 60
+        return f"{days} дней, {hours} часов, {minutes} минут, {self.seconds} секунд"
 
-    seconds = int(input("Enter a number of seconds: "))
+    def show_result(self):
+        seconds = int(input("Введите данные: "))
+        a = TimeDesk(seconds)
+        return a.converter()
 
-    days = (seconds // seconds_in_day)
-    seconds = seconds - (days * seconds_in_day)
+    def __str__(self):
+        return f"Секунд: {self.seconds}\n"
 
-    hours = (seconds // seconds_in_hour)
-    seconds = seconds - (hours * seconds_in_hour)
 
-    minutes = (seconds // seconds_in_minute)
-    seconds = seconds - (minutes * seconds_in_minute)
+secs = TimeDesk(6666)
 
-    print("{0:.0f} days, {1:.0f} hours, {2:.0f} minutes, {3:.0f} seconds.".format(days, hours, minutes, seconds))
+print(secs.show_result())
 
 
 # Задание № 2
@@ -78,5 +79,5 @@ print(ural)
 
 print(ural.nickname)
 print(ural.characteristics)
-ural.year ="1946"
+ural.year = "1946"
 print(ural.nickname)
