@@ -23,7 +23,7 @@ file_reader = open(file_path, mode="r", encoding="Latin-1")
 results_file = open(result_file_path, mode="w", encoding="Latin-1")
 my_text_1 = file_reader.read()
 
-searching = r"[A-Z][a-z]+\W+\w+\s[A-Z]\w+|[A-Z][A-Za-z]+\s[A-Z][']?[A-Za-z]+"
+searching=r"[A-Z][a-z]+\W+\w+\s[A-Z]\w+|[A-Z][A-Za-z]+\s[A-Z]\w+|[A-Za-z]\w+\s[A-Z][']?[A-Z]\w+"
 results_all = re.findall(searching, my_text_1)
 for item in results_all:
     print(item)
